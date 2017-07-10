@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NuiSite.API.Controllers
 {
@@ -10,6 +11,7 @@ namespace NuiSite.API.Controllers
     public class ValuesController : Controller
     {
         // GET api/values
+        [Authorize]
         [HttpGet]
         public IEnumerable<string> Get()
         {
@@ -42,3 +44,4 @@ namespace NuiSite.API.Controllers
         }
     }
 }
+

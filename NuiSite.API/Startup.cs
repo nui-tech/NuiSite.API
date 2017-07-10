@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 
 namespace NuiSite.API
 {
@@ -38,6 +35,23 @@ namespace NuiSite.API
             loggerFactory.AddDebug();
 
             app.UseMvc();
+
+            app.UseJwtBearerAuthentication(new JwtBearerOptions
+            {
+                AutomaticAuthenticate = true,
+                IncludeErrorDetails = true,
+                Authority = "https://securetoken.google.com/nuiweb-69916",
+                TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = "https://securetoken.google.com/nuiweb-69916",
+                    ValidateAudience = true,
+                    ValidAudience = "nuiweb-69916",
+                    ValidateLifetime = true,
+                },
+            });
+
+
         }
     }
 }
