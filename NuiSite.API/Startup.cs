@@ -34,7 +34,7 @@ namespace NuiSite.API
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseMvc();
+
 
             app.UseJwtBearerAuthentication(new JwtBearerOptions
             {
@@ -51,7 +51,7 @@ namespace NuiSite.API
                 },
             });
 
-
+            app.UseMvc();
         }
     }
 }
