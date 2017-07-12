@@ -263,4 +263,4 @@ __pycache__/
 
 #my iggnore
 ScaffoldingReadMe.txt
-appsettings.Development.json
+#appsettings.Development.json
