@@ -8,7 +8,10 @@ namespace NuiSite.API.Entities
         public virtual DbSet<Post> Post { get; set; }
         public virtual DbSet<User> User { get; set; }
 
-        public NuiSiteContext(DbContextOptions<NuiSiteContext> o) : base(o) { }
+        public NuiSiteContext(DbContextOptions<NuiSiteContext> options) : base(options)
+        {
+
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

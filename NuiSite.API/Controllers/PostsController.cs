@@ -1,15 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NuiSite.API.Entities;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace NuiSite.API.Controllers
 {
-    [Produces("application/json")]
     [Route("api/Posts")]
     public class PostsController : Controller
     {
@@ -18,6 +15,16 @@ namespace NuiSite.API.Controllers
         public PostsController(NuiSiteContext context)
         {
             _context = context;
+
+        }
+
+        [HttpGet("test")]
+        public IActionResult test()
+        {
+            var xxx = _context.Post.Any();
+
+
+            return Ok(xxx);
         }
 
         // GET: api/Posts
