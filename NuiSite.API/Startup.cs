@@ -22,8 +22,10 @@ namespace NuiSite.API
         public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        // add dependency services
         public void ConfigureServices(IServiceCollection services)
         {
+
             // Add framework services.
             services.AddMvc();
         }
@@ -34,8 +36,12 @@ namespace NuiSite.API
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            app.UseStatusCodePages();
+
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
 
+            //add Jwt Bearer middleware into pipline
             app.UseJwtBearerAuthentication(new JwtBearerOptions
             {
                 AutomaticAuthenticate = true,
