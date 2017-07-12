@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.EntityFrameworkCore;
+using NuiSite.API.Entities;
 
 namespace NuiSite.API
 {
@@ -26,6 +28,8 @@ namespace NuiSite.API
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddDbContext<NuiSiteContext>(options => options.UseSqlServer(Configuration.GetConnectionString("NuiSiteDb")));
+            
             // Add framework services.
             services.AddMvc();
         }

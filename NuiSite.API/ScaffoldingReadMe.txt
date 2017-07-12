@@ -47,3 +47,6 @@ However you may still need to do make changes to your project.
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+
+
+		Scaffold-DbContext "Server=tcp:nuisite.database.windows.net,1433;Initial Catalog=NuiSite;Persist Security Info=False;User ID=kantae;Password=Nu!575967;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities -Force
