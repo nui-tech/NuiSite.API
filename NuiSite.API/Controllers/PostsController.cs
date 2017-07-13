@@ -1,30 +1,34 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using NuiSite.API.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using NuiSite.API.Entities;
+using Microsoft.Extensions.Configuration;
 
 namespace NuiSite.API.Controllers
 {
+    [Produces("application/json")]
     [Route("api/Posts")]
     public class PostsController : Controller
     {
         private readonly NuiSiteContext _context;
+        private IConfiguration _config;
 
-        public PostsController(NuiSiteContext context)
+        public PostsController(NuiSiteContext context, IConfiguration config)
         {
             _context = context;
-
+            _config = config;
         }
 
+
         [HttpGet("test")]
-        public IActionResult test()
+        public IActionResult Test()
         {
-            var xxx = _context.Post.Any();
-
-
-            return Ok(xxx);
+            var xx = _config.GetConnectionString("DefaultConnection");
+            return Ok(new { connection = xx });
         }
 
         // GET: api/Posts

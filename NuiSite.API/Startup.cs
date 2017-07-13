@@ -29,8 +29,8 @@ namespace NuiSite.API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            var connection = Configuration.GetConnectionString("NuiSiteDb");
-            services.AddDbContext<NuiSiteContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<NuiSiteContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddSingleton<IConfiguration>(Configuration);
 
             // Add framework services.
             services.AddMvc();
