@@ -262,6 +262,6 @@ __pycache__/
 
 
 #my iggnore
-ScaffoldingReadMe.txt
-appsettings.Development.json
-appsettings.Production.json
+/ScaffoldingReadMe.txt
+/appsettings.Development.json
+/appsettings.Production.json
