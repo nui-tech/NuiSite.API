@@ -30,9 +30,10 @@ namespace NuiSite.API.Controllers
         [Authorize]
         public IActionResult Test()
         {
+            var zz = HttpContext.User.Claims.Select(x => new { x.Type, x.Value } ).ToList();
             var xx = _config.GetConnectionString("NuiSiteDb");
             var yy = _config.GetConnectionString("DefaultConnection");
-            return Ok(new { NuiSiteDb = xx, DefaultConnection = yy });
+            return Ok(new { NuiSiteDb = xx, DefaultConnection = yy, user = zz });
         }
 
         // GET: api/Posts
