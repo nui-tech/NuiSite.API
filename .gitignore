@@ -265,3 +265,5 @@ __pycache__/
 ScaffoldingReadMe.txt
 *.Development.json
 *.Production.json
+NuiSite.API/appsettings.Development.json
+NuiSite.API/appsettings.Production.json
