@@ -38,7 +38,6 @@ namespace NuiSite.API.Controllers
 
         // GET: api/Posts
         [HttpGet]
-        [Authorize]
         public IActionResult GetPost()
         {
             var post = _context.Post;
@@ -58,13 +57,13 @@ namespace NuiSite.API.Controllers
             }
 
             var post = await _context.Post.SingleOrDefaultAsync(m => m.Id == id);
-
+            var tags = _context.TagMap.Where(x => x.PostId == post.Id).Select(x => x.Tag.Name).ToList();
             if (post == null)
             {
                 return NotFound();
             }
 
-            return Ok(post);
+            return Ok(new { post,tags });
         }
 
         // PUT: api/Posts/5
