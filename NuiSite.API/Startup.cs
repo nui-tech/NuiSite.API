@@ -29,6 +29,18 @@ namespace NuiSite.API
         public void ConfigureServices(IServiceCollection services)
         {
 
+            // Add service and create Policy with options
+            //https://weblog.west-wind.com/posts/2016/Sep/26/ASPNET-Core-and-CORS-Gotchas
+            //https://stackoverflow.com/questions/41796468/failed-http-post-with-angular2-to-asp-net-core-api/41815277#41815277
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
+
             //To get connection string work
             //1 make sure set firewall open for your IP address
             //2 correct connetion's name
@@ -52,6 +64,8 @@ namespace NuiSite.API
 
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
+            // global policy - assign here or on each controller
+            app.UseCors("CorsPolicy");
 
             //add Jwt Bearer middleware into pipline
             app.UseJwtBearerAuthentication(new JwtBearerOptions

@@ -27,10 +27,9 @@ namespace NuiSite.API.Controllers
 
 
         [HttpGet("test")]
-        [Authorize]
         public IActionResult Test()
         {
-            var zz = HttpContext.User.Claims.Select(x => new { x.Type, x.Value } ).ToList();
+            var zz = HttpContext.User.Claims.Select(x => new { x.Type, x.Value }).ToList();
             var xx = _config.GetConnectionString("NuiSiteDb");
             var yy = _config.GetConnectionString("DefaultConnection");
             return Ok(new { NuiSiteDb = xx, DefaultConnection = yy, user = zz });
@@ -63,7 +62,7 @@ namespace NuiSite.API.Controllers
                 return NotFound();
             }
 
-            return Ok(new { post,tags });
+            return Ok(new { post, tags });
         }
 
         // PUT: api/Posts/5
