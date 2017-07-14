@@ -29,7 +29,13 @@ namespace NuiSite.API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<NuiSiteContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //To get connection string work
+            //1 make sure set firewall open for your IP address
+            //2 correct connetion's name
+
+            //services.AddDbContext<NuiSiteContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<NuiSiteContext>(options => options.UseSqlServer(Configuration.GetConnectionString("NuiSiteDb")));
+
             services.AddSingleton<IConfiguration>(Configuration);
 
             // Add framework services.

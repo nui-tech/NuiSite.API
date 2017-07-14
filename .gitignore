@@ -260,10 +260,6 @@ paket-files/
 __pycache__/
 *.pyc
 
-
-#my iggnore
-ScaffoldingReadMe.txt
-*.Development.json
-*.Production.json
 NuiSite.API/appsettings.Development.json
 NuiSite.API/appsettings.Production.json
+NuiSite.API/appsettings.Development.json

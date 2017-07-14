@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NuiSite.API.Entities;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NuiSite.API.Controllers
 {
+
     [Produces("application/json")]
     [Route("api/Posts")]
     public class PostsController : Controller
@@ -25,17 +27,24 @@ namespace NuiSite.API.Controllers
 
 
         [HttpGet("test")]
+        [Authorize]
         public IActionResult Test()
         {
-            var xx = _config.GetConnectionString("DefaultConnection");
-            return Ok(new { connection = xx });
+            var xx = _config.GetConnectionString("NuiSiteDb");
+            var yy = _config.GetConnectionString("DefaultConnection");
+            return Ok(new { NuiSiteDb = xx, DefaultConnection = yy });
         }
 
         // GET: api/Posts
         [HttpGet]
-        public IEnumerable<Post> GetPost()
+        [Authorize]
+        public IActionResult GetPost()
         {
-            return _context.Post;
+            var post = _context.Post;
+            if (!post.Any())
+                return NotFound();
+
+            return Ok(post.ToList());
         }
 
         // GET: api/Posts/5
