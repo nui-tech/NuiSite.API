@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using NuiSite.API.Entities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authorization;
+using NuiSite.API.Models;
 
 namespace NuiSite.API.Controllers
 {
@@ -39,6 +40,7 @@ namespace NuiSite.API.Controllers
         [HttpGet]
         public IActionResult GetPost()
         {
+            var xx = DateTime.Now;
             var post = _context.Post;
             if (!post.Any())
                 return NotFound();
@@ -104,10 +106,17 @@ namespace NuiSite.API.Controllers
         [HttpPost]
         public async Task<IActionResult> PostPost([FromBody] Post post)
         {
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
+
+            var date = DateTime.Now;
+            post.CreatedOn = date;
+            post.UpdateOn = date;
+            post.IsActive = true;
 
             _context.Post.Add(post);
             await _context.SaveChangesAsync();

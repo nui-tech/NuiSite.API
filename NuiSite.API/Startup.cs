@@ -38,6 +38,7 @@ namespace NuiSite.API
                     builder => builder.AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader()
+                    .AllowAnyOrigin()
                     .AllowCredentials());
             });
 

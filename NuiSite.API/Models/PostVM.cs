@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace NuiSite.API.Entities
+namespace NuiSite.API.Models
 {
-    public partial class Post
+    public class PostVM
     {
-        public Post()
-        {
-            TagMap = new HashSet<TagMap>();
-        }
-
         public int Id { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
@@ -19,7 +16,5 @@ namespace NuiSite.API.Entities
         public int? UpdateBy { get; set; }
         public DateTime? UpdateOn { get; set; }
         public bool? IsActive { get; set; }
-
-        public virtual ICollection<TagMap> TagMap { get; set; }
     }
 }

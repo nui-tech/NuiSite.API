@@ -5,11 +5,6 @@ namespace NuiSite.API.Entities
 {
     public partial class User
     {
-        public User()
-        {
-            Post = new HashSet<Post>();
-        }
-
         public int Id { get; set; }
         public string FirebaseId { get; set; }
         public string Name { get; set; }
@@ -17,7 +12,5 @@ namespace NuiSite.API.Entities
         public string AvatarUrl { get; set; }
         public DateTime? LastInfoUpdated { get; set; }
         public string RoleId { get; set; }
-
-        public virtual ICollection<Post> Post { get; set; }
     }
 }

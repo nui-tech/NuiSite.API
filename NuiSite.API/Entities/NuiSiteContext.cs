@@ -18,8 +18,6 @@ namespace NuiSite.API.Entities
         {
             modelBuilder.Entity<Post>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.Author).HasMaxLength(50);
 
                 entity.Property(e => e.CreatedOn).HasColumnType("date");
@@ -27,11 +25,6 @@ namespace NuiSite.API.Entities
                 entity.Property(e => e.Title).HasMaxLength(250);
 
                 entity.Property(e => e.UpdateOn).HasColumnType("date");
-
-                entity.HasOne(d => d.CreatedByNavigation)
-                    .WithMany(p => p.Post)
-                    .HasForeignKey(d => d.CreatedBy)
-                    .HasConstraintName("FK_Post_User");
             });
 
             modelBuilder.Entity<Tag>(entity =>
