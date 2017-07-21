@@ -57,14 +57,13 @@ namespace NuiSite.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var post = await _context.Post.SingleOrDefaultAsync(m => m.Id == id);
-            var tags = _context.TagMap.Where(x => x.PostId == post.Id).Select(x => x.Tag.Name).ToList();
+            var post = await _context.Post.SingleOrDefaultAsync(m => m.Id == id);         
             if (post == null)
             {
                 return NotFound();
             }
 
-            return Ok(new { post, tags });
+            return Ok(post);
         }
 
         // PUT: api/Posts/5

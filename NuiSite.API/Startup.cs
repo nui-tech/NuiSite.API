@@ -35,10 +35,10 @@ namespace NuiSite.API
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
-                    builder => builder.AllowAnyOrigin()
+                    builder => builder
+                    .AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader()
-                    .AllowAnyOrigin()
                     .AllowCredentials());
             });
 
