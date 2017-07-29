@@ -22,6 +22,8 @@ namespace NuiSite.API.Entities
 
                 entity.Property(e => e.CreatedOn).HasColumnType("date");
 
+                entity.Property(e => e.Description).HasMaxLength(500);
+
                 entity.Property(e => e.Title).HasMaxLength(250);
 
                 entity.Property(e => e.UpdateOn).HasColumnType("date");
