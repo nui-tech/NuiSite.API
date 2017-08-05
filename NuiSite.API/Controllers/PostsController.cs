@@ -57,7 +57,7 @@ namespace NuiSite.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var post = await _context.Post.SingleOrDefaultAsync(m => m.Id == id);         
+            var post = await _context.Post.SingleOrDefaultAsync(m => m.Id == id);
             if (post == null)
             {
                 return NotFound();
@@ -68,6 +68,7 @@ namespace NuiSite.API.Controllers
 
         // PUT: api/Posts/5
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutPost([FromRoute] int id, [FromBody] Post post)
         {
             if (!ModelState.IsValid)
@@ -103,6 +104,7 @@ namespace NuiSite.API.Controllers
 
         // POST: api/Posts
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> PostPost([FromBody] Post post)
         {
 
@@ -125,6 +127,7 @@ namespace NuiSite.API.Controllers
 
         // DELETE: api/Posts/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeletePost([FromRoute] int id)
         {
             if (!ModelState.IsValid)

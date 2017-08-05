@@ -24,6 +24,7 @@ namespace NuiSite.API
 
             var host = new WebHostBuilder()
                 .UseKestrel()
+                .UseUrls(hostUrl)
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
