@@ -85,6 +85,7 @@ namespace NuiSite.API.Controllers
 
             try
             {
+                post.UpdateOn = DateTime.Now;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
